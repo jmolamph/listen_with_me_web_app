@@ -20,7 +20,7 @@ def generate_unique_room_code():
 # Create your models here.
 class Room(models.Model):
     # information we want to store in each music room
-    code = models.CharField(max_length=8, default="password", unique=True)  # stores the room code
+    code = models.CharField(max_length=8, default=generate_unique_room_code, unique=True)  # stores the room code
     host = models.CharField(max_length=50, unique=True)  # stores the host id
     guest_can_pause = models.BooleanField(null=False, default=False)  # stores whether a room guest can pause the music
     votes_to_skip = models.IntegerField(null=False, default=1)  # stores the number of votes required to skip the song
